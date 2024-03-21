@@ -16,11 +16,11 @@
 #define ADC_DELAY_MS  500
 
 // Variable para almacenar el resultado del ADC
-uint16_t adc_value = 0;
+uint16_t adc_value = 4095;
 // Variable para guardar el valor de temperatura
 float temperatura = 0.0;
 // Constante de temperatura para el termistor
-const uint16_t beta = 3950;
+const uint16_t beta = 3980;
 
 /*
  * @brief Callback para la interrupcion de timer
@@ -28,8 +28,9 @@ const uint16_t beta = 3950;
  */
 bool muestreo_periodico(struct repeating_timer *t) {
   // Lectura analogica (variable adc_value)
-
-  // Calcular valor de temperatura (variable temperatura)
+adc_value = adc_read();
+// Calcular valor de temperatura (variable temperatura)
+temperatura = 1 / (log(1 / (4095. / adc_value - 1)) / beta + 1.0 / 298.15) - 273.15;
 
 }
 
@@ -41,11 +42,9 @@ void display_temp(float temperatura) {
   // Variable para armar el string
   char str[16];
   // Armo string con temperatura
-  sprintf(str, "Temp=%.2f C", temperatura);
-  // Limpio display
-  lcd_clear();
-  // Muestro
-  lcd_string(str);
+  sprintf(str, "Temp=%.2f C \n", temperatura);
+  
+  printf("%s\n");
 }
 
 /*
