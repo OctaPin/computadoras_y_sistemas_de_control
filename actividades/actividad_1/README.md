@@ -31,3 +31,5 @@ Se encuentra una simulación ya armada en Wokwi, un simulador online para alguno
 ## 1.3 ENTREGA DE LA ACTIVIDAD
 
 La entrega de la actividad se hace en un repositorio individual de GitHub que se deberá entregar en la tarea correspondiente en Classroom donde será calificada. La actividad tiene un parcialito asociado que se debe completar y aprobar.
+## 1.4 anotación 
+Tuvimos que utilizar el lm35 debido a la falta de termistores 
